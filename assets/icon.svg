@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1729"/>
+      <stop offset="100%" stop-color="#1a2342"/>
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="50%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+    <linearGradient id="greenFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.08" stroke="#94a3b8" stroke-width="1.5">
+    <line x1="160" y1="280" x2="860" y2="280"/>
+    <line x1="160" y1="420" x2="860" y2="420"/>
+    <line x1="160" y1="560" x2="860" y2="560"/>
+    <line x1="160" y1="700" x2="860" y2="700"/>
+  </g>
+
+  <!-- Green area fill under the chart line -->
+  <path d="M180 720 L300 650 L420 680 L520 540 L620 440 L740 320 L840 220 L840 720 Z"
+        fill="url(#greenFill)"/>
+
+  <!-- Main chart line - rising trend -->
+  <path d="M180 720 L300 650 L420 680 L520 540 L620 440 L740 320 L840 220"
+        fill="none" stroke="url(#greenGlow)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"
+        filter="url(#glow)"/>
+
+  <!-- Arrow head at the end -->
+  <polygon points="840,220 790,260 810,230 780,240"
+           fill="#4ade80" filter="url(#softGlow)"/>
+  <polygon points="840,220 800,280 830,250 790,270"
+           fill="#22c55e" filter="url(#glow)"/>
+
+  <!-- Upward arrow -->
+  <g transform="translate(780, 160)" filter="url(#softGlow)">
+    <polygon points="60,0 100,60 75,60 75,110 45,110 45,60 20,60"
+             fill="#22c55e"/>
+  </g>
+
+  <!-- Data dots on chart -->
+  <g fill="#4ade80" filter="url(#glow)">
+    <circle cx="180" cy="720" r="8"/>
+    <circle cx="300" cy="650" r="8"/>
+    <circle cx="420" cy="680" r="8"/>
+    <circle cx="520" cy="540" r="9"/>
+    <circle cx="620" cy="440" r="9"/>
+    <circle cx="740" cy="320" r="10"/>
+    <circle cx="840" cy="220" r="12"/>
+  </g>
+
+  <!-- Dollar sign accent -->
+  <g transform="translate(140, 780)" opacity="0.25">
+    <text font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#22c55e">$</text>
+  </g>
+</svg>
